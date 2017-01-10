@@ -1,6 +1,6 @@
 {
   "name": "mycelium-gear",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An easy to use JavaScript API for Mycelium Gear's API",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,10 @@
     "mycelium",
     "gear"
   ],
+  "repository" : { 
+   "type" : "git",
+   "url" : "https://github.com/lf94/mycelium-gear.git"
+  },
   "author": "lf94",
   "license": "ISC",
   "dependencies": {
