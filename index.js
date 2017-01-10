@@ -17,7 +17,10 @@ let Gateway = function(id, secret) {
     Prepare an order, but don't send it to Mycelium Gear yet.
 */
 let Order = function (gateway, amountInSatoshi, callbackData) {
-    this.gateway = gateway
+    Object.assign(this, { gateway, amountInSatoshi, callbackData })
+}
+
+Order.prototype.prepare = function(amountInSatoshi, callbackData) {
     this.domain  = 'https://gateway.gear.mycelium.com'
     this.uri     = `/gateways/${this.gateway.id}/orders?`
     + `amount=${amountInSatoshi}`
@@ -34,6 +37,13 @@ let Order = function (gateway, amountInSatoshi, callbackData) {
     Send a prepared order to Mycelium Gear to be processed.
 */
 Order.prototype.send = function() {
+    return this.getNextKeychainId().then(() => {
+        this.prepare(this.amountInSatoshi, this.callbackData)
+        return this._send();
+    })
+}
+
+Order.prototype._send = function() {
     const _this = this
     if(! this.prepared) { return Promise.reject('Order is not prepared!'); }
 
@@ -57,7 +67,7 @@ Order.prototype.send = function() {
 
 Order.prototype.getNextKeychainId = function() {
     const _this = this
-    const url   = `https://gateway.gear.mycelium.com/gateways/${this.gatewayId}/last_keychain_id`
+    const url   = `https://gateway.gear.mycelium.com/gateways/${this.gateway.id}/last_keychain_id`
 
     return fetch(url)
     .then((response) => response.json().then((json) => {
