@@ -1,0 +1,20 @@
+{
+  "name": "mycelium-gear",
+  "version": "0.0.1",
+  "description": "An easy to use JavaScript API for Mycelium Gear's API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mycelium",
+    "gear"
+  ],
+  "author": "lf94",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "node-fetch": "^1.6.3",
+    "uuid": "^3.0.1"
+  }
+}
