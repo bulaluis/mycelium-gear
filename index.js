@@ -77,12 +77,12 @@ Order.prototype.getNextKeychainId = function() {
 }
 
 const PaymentStatus = {
-    Unconfirmed,
-    PaidInFull,
-    Underpaid,
-    Overpaid,
-    Expired,
-    Canceled
+    Unconfirmed: 1,
+    PaidInFull: 2,
+    Underpaid: 3,
+    Overpaid: 4,
+    Expired: 5,
+    Canceled: 6
 }
 
 module.exports = {
