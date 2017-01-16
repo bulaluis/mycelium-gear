@@ -76,7 +76,17 @@ Order.prototype.getNextKeychainId = function() {
     }))
 }
 
+const PaymentStatus = {
+    Unconfirmed,
+    PaidInFull,
+    Underpaid,
+    Overpaid,
+    Expired,
+    Canceled
+}
+
 module.exports = {
     Gateway,
-    Order
+    Order,
+    PaymentStatus
 }
