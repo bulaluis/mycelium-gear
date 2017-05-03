@@ -55,12 +55,13 @@ Order.prototype._send = function() {
         headers
     })
 
+    // Expose headers
+    this.headers = headers
+
     /* The order has been successfully sent, the configuration is no longer valid. */
     orderFulfillmentRequest.then((response) => {
         _this.prepared = false
     })
-
-    console.log(headers)
 
     return orderFulfillmentRequest;
 }
